@@ -1,31 +1,23 @@
-let randomPlayer1 = Math.floor(Math.random() * 6)+ 1;
-let randomPlayer2 = Math.floor(Math.random() * 6)+ 1;
-
-let randomImage1 = "/images/dice" + randomPlayer1 + ".png";
-let randomImage2 = "/images/dice" + randomPlayer2 + ".png";
-
 const button = document.querySelector("button");
+const showWinner = document.querySelector("h1");
+const image1 = document.querySelector(".img1");
+const image2 = document.querySelector(".img2");
 
+button.addEventListener("click", () => {
+  const randomPlayer1 = Math.floor(Math.random() * 6) + 1;
+  const randomPlayer2 = Math.floor(Math.random() * 6) + 1;
 
-button.addEventListener("click", ()=>{
-    window.location.reload();
-})
+  const randomImage1 = `/images/dice${randomPlayer1}.png`;
+  const randomImage2 = `/images/dice${randomPlayer2}.png`;
 
-const showWinner= document.querySelector("h1");
-const image1= document.querySelector(".img1");
-const image2= document.querySelector(".img2");
+  image1.setAttribute("src", randomImage1);
+  image2.setAttribute("src", randomImage2);
 
-image1.setAttribute("src", randomImage1);
-image2.setAttribute("src", randomImage2);
-
-if(randomImage1 > randomImage2){
-showWinner.textContent = "🚩 Player1 Wins"
-}
-else if(randomImage1 == randomImage2){
-    showWinner.textContent = "Draw"
-}
-else{
-showWinner.textContent = "🚩 Player2 Wins"
-}
-
-
+  if (randomPlayer1 > randomPlayer2) {
+    showWinner.textContent = "🚩 Player 1 Wins!";
+  } else if (randomPlayer1 === randomPlayer2) {
+    showWinner.textContent = "It's a Draw!";
+  } else {
+    showWinner.textContent = "🚩 Player 2 Wins!";
+  }
+});
